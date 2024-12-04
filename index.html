@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./assets/style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+
+<header>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<nav>
+		<ul>
+			<li>projets</li>
+			<li>contact</li>
+			<li id="BtnLogin">login</li>
+			
+			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+		</ul>
+	</nav>
+</header>
+<main>
+	<section id="introduction">
+		<figure>
+			<img src="./assets/images/sophie-bluel.png" alt="">
+		</figure>
+		<article>
+			<h2>Designer d'espace</h2>
+			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
+			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+		</article>
+	</section>
+	<section id="portfolio">
+		<h2>Mes Projets <button id="BtnModifier"><i class="fa-regular fa-pen-to-square"></i>Modifier</button></h2>
+
+		<div id="FiltresBtns">
+		</div>
+
+		<div class="gallery">			
+		</div>
+
+	</section>
+	<section id="contact">
+		<h2>Contact</h2>
+		<p>Vous avez un projet ? Discutons-en !</p>
+		<form action="#" method="post">
+			<label for="name">Nom</label>
+			<input type="text" name="name" id="name">
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email">
+			<label for="message">Message</label>
+			<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			<input type="submit" value="Envoyer">
+		</form>
+	</section>
+</main>
+
+<footer>
+	<nav>
+		<ul>
+			<li>Mentions Légales</li>
+		</ul>
+	</nav>
+</footer>
+
+<div id="modalContainer">
+	<div id="modalGallery" class="modalView">
+		<span class="CloseBtn" id="CloseBtn1">X</span>
+		<h2>Galerie Photos</h2>
+		<div id="galleryModal">			
+			
+		</div>
+		<button id="addPhotoBtn">Ajouter une Photo</button>
+		</div>
+	
+		<div id="modalForm"  class="modalView">
+			<div class="modalHeader">
+				<span class="BackBtn" id="BackBtn"><i class="fa-solid fa-arrow-left"></i></span>
+				<span class="CloseBtn" id="CloseBtn1">X</span>			
+			</div>
+			<h2>Ajout photo</h2>
+			<form action="#" class="form_add_picture">
+				<!-- <p class="hidden login_error" > Tous les champs sont obligatoires</p><br> -->
+				<label for="picture" class="input_file">
+					<div class="img_container">
+						<i class="fa-regular fa-image"></i>
+						<span>+ Ajouter une photo</span>
+						<input type="file" id="picture" accept="image/jpeg, image/png"/>
+						<p>jpg, png : 4mo max</p>	
+					</div>
+					<img src="" class="new_picture hidden">
+				</label>
+	
+				<label id="title"  for="picture_title" class="form_label">Titre</label>
+				<input id="picture_title" class="add_picture_form" type="text" placeholder="">
+				<label for="picture_category" class="form_label">Catégorie</label>
+				<select name="categories" id="picture_category" class="add_picture_form">
+				</select>
+			</form>	
+			<button id="valid_button" class="btnFiltre btnFiltreActive">Valider</button>
+		</div>
+</div>
+
+<script  src="index.js"></script>
+<script  src="modal.js"></script>
+
+</body>
+</html>
