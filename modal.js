@@ -113,7 +113,7 @@ const displayModalGallery = () => {
   }
 
   // Ajout d'une Photo
-  formAddPicture.addEventListener('click', () => {
+  formAddPicture.addEventListener('click', async () => {
 
     const pictureFile = picture.files[0]
     const pictureTitle = picture_title.value;
@@ -125,10 +125,58 @@ const displayModalGallery = () => {
     formData.append('title', pictureTitle);
     formData.append('category', parseInt(pictureCategory,10));
     
+    // alert(picture_category.value)
+
+    const res = await fetch(`http://localhost:5678/api/works`, { //chemin suppression des photos
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem('token'),
+      },
+      body: formData
+    });
     
+   if (res.status === 201){
+    getWorks();
+   }
 
-
-    alert(picture_category.value)
+    //    if (response.ok) {
+    //     const result = await response.json();
+    //     console.log("Image uploadée avec succès :", result);
+    //     alert("L'image a été envoyée avec succès !");
+    // } else {
+    //     console.error("Erreur lors de l'envoi :", response.statusText);
+    //     alert("Une erreur est survenue lors de l'envoi de l'image.");
+    // }
+    // } catch (error) {
+    // console.error("Erreur réseau :", error);
+    // alert("Une erreur réseau s'est produite.");
+    // }
+    // });
     
   })
 
+  const verifDataForm = () => {
+
+    const pictureFile = picture.files[0]
+    const pictureTitle = picture_title.value;
+    const pictureCategory = picture_category.value;
+
+    if(pictureTitle && pictureCategory != '0' && pictureFile)
+    {
+        formAddPicture.disabled = false;
+        console.log('btn active')
+    }
+    else
+    {
+        formAddPicture.disabled = true;
+        console.log('btn desactive')
+    }
+
+
+  }
+
+  picture.addEventListener('change', verifDataForm);
+  picture_title.addEventListener('keyup', verifDataForm);
+  picture_category.addEventListener('change', verifDataForm);
+
+  verifDataForm ();
