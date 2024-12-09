@@ -180,3 +180,43 @@ const displayModalGallery = () => {
   picture_category.addEventListener('change', verifDataForm);
 
   verifDataForm ();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const pictureInput = document.getElementById("picture"); // Champ input pour le fichier
+    const newPicture = document.querySelector(".new_picture"); // Élément img pour prévisualisation
+    const imgContainer = document.querySelector(".img_container"); // Conteneur de l'input
+
+    // Écouter le changement sur le champ input
+    pictureInput.addEventListener("change", (event) => {
+        const file = event.target.files[0]; // Récupération du premier fichier sélectionné
+
+        if (file) {
+            // Vérifier le type de fichier
+            if (!file.type.startsWith("image/")) {
+                alert("Veuillez sélectionner un fichier image (jpg, png).");
+                return;
+            }
+
+            // Vérifier la taille du fichier (4 Mo max)
+            const maxSize = 4 * 1024 * 1024; // 4 Mo en octets
+            if (file.size > maxSize) {
+                alert("La taille de l'image ne doit pas dépasser 4 Mo.");
+                return;
+            }
+
+            // Lire le fichier et afficher la prévisualisation
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                newPicture.src = e.target.result; // Assigner la source de l'image
+                newPicture.classList.remove("hidden"); // Rendre l'image visible
+                imgContainer.style.display = "none"; // Masquer l'interface de chargement
+            };
+            reader.readAsDataURL(file); // Lire le fichier en tant qu'URL de données
+        } else {
+            // Si aucun fichier n'est sélectionné, restaurer l'état initial
+            newPicture.src = "";
+            newPicture.classList.add("hidden");
+            imgContainer.style.display = "flex"; // Restaurer l'interface de chargement
+        }
+    });
+});
