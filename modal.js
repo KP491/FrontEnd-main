@@ -94,7 +94,7 @@ const displayModalGallery = () => {
 
     const option1 = document.createElement('option');
 
-    option1.innerText = "choisir une Categori";
+    option1.innerText = "choisir une Catégorie";
     option1.setAttribute('value', 0);
 
     
@@ -187,11 +187,15 @@ const displayModalGallery = () => {
     if(pictureTitle && pictureCategory != '0' && pictureFile)
     {
         formAddPicture.disabled = false;
+        formAddPicture.classList.add('btnFiltreActive');
+        formAddPicture.classList.remove('disabled');
         console.log('btn active')
     }
     else
     {
         formAddPicture.disabled = true;
+        formAddPicture.classList.add('disabled');
+        formAddPicture.classList.remove('btnFiltreActive');
         console.log('btn desactive')
     }
 
