@@ -71,7 +71,7 @@ const displayWorks = (id) => {
 });
 }
 
-// recupertaion des categiries et affichage dynamiques des boutons
+// récupération des catégories et affichage dynamiques des boutons
 
 const getCategory = async () => {
     const response = await fetch('http://localhost:5678/api/categories'); 

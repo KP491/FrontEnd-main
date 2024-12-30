@@ -4,7 +4,7 @@ const password = document.getElementById("password");
 
 FormLogin.addEventListener('submit', (event) => {
 
-        event.preventDefault(); // désactive le comportement poar defaut submit
+        event.preventDefault(); // désactive le comportement pour defaut submit
 
         const data = {
             "email": email.value,
